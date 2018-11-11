@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import api from '../services/api'
+import { api, baseURL } from '../services/api'
 import socket from 'socket.io-client'
 
 import './Timeline.css'
@@ -21,7 +21,7 @@ export default class Timeline extends Component {
   }
 
   subscribeToEvents = () => {
-    const io = socket('ws://localhost:3000')
+    const io = socket(baseURL)
 
     io.on('tweet', data => {
       this.setState({
